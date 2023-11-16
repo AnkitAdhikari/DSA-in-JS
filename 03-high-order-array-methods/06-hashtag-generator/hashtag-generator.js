@@ -12,10 +12,10 @@
 
 function generateHashtag(str) {
   const trimmedStr = str.trim();
-  if (trimmedStr.length > 140 || trimmedStr.length === 0) return false;
-  const formattedStr = trimmedStr.split(' ').map(el => {
-    if (el === '') return '';
+  if (trimmedStr.length === 0) return false;
+  const formattedStr = trimmedStr.split(/\s+/).map(el => {
     return el[0].toUpperCase() + el.slice(1);
   }).join('')
-  return '#' + formattedStr;
+  const hashtag = '#' + formattedStr;
+  return hashtag.length > 140 ? false : hashtag;
 }
